@@ -17,6 +17,7 @@ function handleSubmit(e) {
     console.log(`There are now ${items.length} in your state`);
     e.target.reset();
     displayItems();
+    list.dispatchEvent(new CustomEvent('itemsUpdated', displayItems));
 }
 
 function displayItems() {
@@ -32,4 +33,21 @@ function displayItems() {
     console.log(html);
 }
 
+function restoreFromLocalStorage() {
+    console.log(`Restoring from localstorage`);
+    let lsItems = JSON.parse(localStorage.getItem("items"));
+    if (lsItems.length) {
+        items = lsItems;
+        list.dispatchEvent(new CustomEvent('itemsUpdated'));
+    }
+}
+
+function mirrorToLocalStorage() {
+    localStorage.setItem(items, JSON.stringify(items));
+    console.info('Saving items to localstorage');
+}
+
 shoppingForm.addEventListener("submit", handleSubmit);
+list.addEventListener('itemsUpdated', mirrorToLocalStorage);
+
+restoreFromLocalStorage();

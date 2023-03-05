@@ -71,7 +71,9 @@ function Gallery(gallery) {
 
     // Escape closes the Modal
     function handleKeyUp(e) {
-        if (e.key === `Escape`) closeModal();
+        if (e.key === `Escape`) return closeModal();
+        if (e.key === 'ArrowRight' ) return showNextImage();
+        if (e.key === 'ArrowLeft') return showPrevImage();
     }
 
     // Event Listeners

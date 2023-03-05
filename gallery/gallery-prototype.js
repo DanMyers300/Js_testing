@@ -23,6 +23,9 @@ function Gallery(gallery) {
           return; // stop the function from running
         }
         modal.classList.add('open');
+        window.addEventListener(`keyup`, handleKeyUp);
+        nextButton.addEventListener(`click`, showNextImage);
+        prevButton.addEventListener(`click`, showPrevImage);
     }
 
     // If someone clicks outside then close the modal
@@ -35,6 +38,19 @@ function Gallery(gallery) {
     function closeModal() {
         console.info(`Closing Modal...`);
         modal.classList.remove(`open`);
+        window.removeEventListener("keyup", handleKeyUp);
+        nextButton.removeEventListener("click", showNextImage);
+    }
+
+    // Show next Image
+    function showNextImage() {
+        showImage(currentImage.nextElementSibling
+        || gallery.firstElementChild);
+    }
+    // Show prev Image
+    function showPrevImage() {
+        showImage(currentImage.previousElementSibling
+        || gallery.lastElementChild);
     }
 
     // Update the image in the modal and change the text to match
@@ -52,6 +68,11 @@ function Gallery(gallery) {
         openModal();
     }
 
+
+    // Escape closes the Modal
+    function handleKeyUp(e) {
+        if (e.key === `Escape`) closeModal();
+    }
 
     // Event Listeners
     images.forEach(image => image.addEventListener(`click`, (e)=>showImage(e.currentTarget)));

@@ -9,6 +9,16 @@ function Gallery(gallery) {
     const nextButton = modal.querySelector(`.next`);
     let currentImage;
 
+    function openModal() {
+        console.info('Opening Modal...');
+        // First check if the modal is already open
+        if (modal.matches('.open')) {
+          console.info('Madal already open');
+          return; // stop the function from running
+        }
+        modal.classList.add('open');
+    }
+
     function showImage(el) {
         if(!el) {
             console.info(`No image to show`);
@@ -20,6 +30,7 @@ function Gallery(gallery) {
         modal.querySelector(`h2`).textContent = el.title;
         modal.querySelector(`figure p`).textContent = el.dataset.description;
         currentImage = el;
+        openModal();
     }
 
     images.forEach(image => image.addEventListener(`click`, (e)=>showImage(e.currentTarget)));

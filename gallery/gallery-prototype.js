@@ -76,6 +76,13 @@ function Gallery(gallery) {
         if (e.key === 'ArrowLeft') return showPrevImage();
     }
 
+    images.forEach((image) => 
+        image.addEventListener(`keyup`, (e) => {
+        if (e.key === `Enter`) {
+            showImage(e.currentTarget);
+        }
+    }))
+
     // Event Listeners
     images.forEach(image => image.addEventListener(`click`, (e)=>showImage(e.currentTarget)));
     modal.addEventListener(`click`, handleClickOutside);

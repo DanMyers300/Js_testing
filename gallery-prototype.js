@@ -19,6 +19,17 @@ function Gallery(gallery) {
         modal.classList.add('open');
     }
 
+    function handleClickOutside(e) {
+        if (e.target === e.currentTarget) {
+            closeModal();
+        }
+    }
+
+    function closeModal() {
+        console.info(`Closing Modal...`);
+        modal.classList.remove(`open`);
+    }
+
     function showImage(el) {
         if(!el) {
             console.info(`No image to show`);
@@ -34,6 +45,7 @@ function Gallery(gallery) {
     }
 
     images.forEach(image => image.addEventListener(`click`, (e)=>showImage(e.currentTarget)));
+    modal.addEventListener(`click`, handleClickOutside);
 }
 
 const gallery1 = Gallery(document.querySelector(`.gallery1`));

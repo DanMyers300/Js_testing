@@ -91,3 +91,7 @@ const gallery1 = new Gallery(document.querySelector(`.gallery1`));
 const gallery2 = new Gallery(document.querySelector(`.gallery2`));
 
 console.log(gallery1, gallery2)
+
+{/*
+We are going to remove the word function and instead will put Gallery.prototype, as shown below.
+*/}

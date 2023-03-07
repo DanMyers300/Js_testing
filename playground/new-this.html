@@ -9,13 +9,26 @@
 </head>
 
 <body>
+  <button class="one">Button 1</button>
+  <button class="two">Button 2</button>
+
 <script>
+button1 = document.querySelector(`.one`)
+button2 = document.querySelector(`.two`)
+
 function Pizza() {
   console.log(`Making a pizza`);
 }
 
 const pepperoniPizza = new Pizza();
 console.log(pepperoniPizza);
+
+function tellMeAboutTheButton() {
+  console.log(`outside`, this);
+}
+
+button1.addEventListener(`click`, tellMeAboutTheButton);
+button2.addEventListener(`click`, tellMeAboutTheButton);
 </script>
 </body>
 

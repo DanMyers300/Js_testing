@@ -24,7 +24,7 @@ const pepperoniPizza = new Pizza();
 console.log(pepperoniPizza);
 
 function tellMeAboutTheButton() {
-  console.log(`outside`, this);
+  setTimeout(()=> {this.textContent =`You Clicked Me!`});
 }
 
 button1.addEventListener(`click`, tellMeAboutTheButton);

@@ -25,13 +25,23 @@ const bill = {
   total: 1000,
   calculate: function(taxRate) {
     return this.total + (this.total * taxRate);
-  }
+  },
+  describe(mealType,drinkType,taxRate) {
+    console.log(`Your meal of ${mealType} with a drink of ${drinkType} was ${this.calculate(taxRate)}`);
+  },
 }
 const calc = bill.calculate.bind(bill);
 // console.log(calc(0.13));
 
 const total2 = bill.calculate.call({total:500}, 0.06);
-console.log(total2);
+// console.log(total2);
+
+const total3 = bill.calculate.apply({ total: 325 }, [0.60]);
+// console.log(total3);
+
+// bill.describe(`pizza`, `beer`, 0.13);
+const myMeal = bill.describe.call(bill, 'pizza', 'beer', 0.13);
+console.log(myMeal);
 
 </script>
 </body>

@@ -16,12 +16,14 @@
 button1 = document.querySelector(`.one`)
 button2 = document.querySelector(`.two`)
 
-function Pizza() {
-  console.log(`Making a pizza`);
+function Pizza(toppings = [], customer) {
+  this.toppings = toppings;
+  this.customer = customer;
+  this.id = Math.floor(Math.random() * 16777215).toString(16);
 }
 
-const pepperoniPizza = new Pizza();
-console.log(pepperoniPizza);
+const pepperoniPizza = new Pizza([`pepperoni`], `Wes Bos`);
+const canadianPizza = new Pizza([`pepperoni`, `mushrooms`, `onion`], `Kait Bos`);
 
 function tellMeAboutTheButton() {
   setTimeout(()=> {this.textContent =`You Clicked Me!`});

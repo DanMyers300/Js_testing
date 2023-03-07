@@ -96,7 +96,3 @@ Gallery.prototype.openModal = function() {
 // Display gallery to page
 const gallery1 = new Gallery(document.querySelector(`.gallery1`));
 const gallery2 = new Gallery(document.querySelector(`.gallery2`));
-
-{/*
-
-*/}

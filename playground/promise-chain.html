@@ -25,7 +25,17 @@
     function animate(e) {
       const el = e.currentTarget;
       el.textContent = `GO`;
-      wait(200).then(()=>{el.classList.add(`circle`)});
+      wait(200).then(()=>{el.classList.add(`circle`)
+      return wait(500);
+      }).then(() => {el.classList.add(`red`)
+      return wait(250);
+      }).then(() => {el.classList.remove(`circle`)
+      return wait(500);
+      }).then(() => {
+        el.classList.remove(`red`);
+        el.classList.add(`purple`);
+        return wait (500);
+      }).then(() => {el.classList.add(`fadeOut`)});
     }
 
     go = document.querySelector(`.go`);

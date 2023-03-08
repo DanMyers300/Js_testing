@@ -11,10 +11,9 @@
 <body>
   <script>
     function makePizza(toppings) {
-      const pizzaPromise = new Promise(
-        function(resolve, reject) {
-          resolve(`Here is your pizza 🍕 with the toppings ${toppings.join(` `)}`);
-        });
+      const pizzaPromise = new Promise(function(resolve, reject) {
+      resolve(`Here is your pizza 🍕 with the toppings ${toppings.join(' ')}`);
+      });
       return pizzaPromise;
     }
 
@@ -22,7 +21,7 @@
     const canadianPromise = makePizza(['pepperoni', 'mushroom', 'onions'])
 
     const pizza = makePizza();
-    console.log(pizza);
+    console.log(pepperoniPromise, canadianPromise);
   </script>
 </body>
 

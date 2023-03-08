@@ -18,6 +18,10 @@
     // }, 2000);
 
     // console.log('Ending');
+
+    const wait = (ms = 0) => new Promise(resolve => setTimeout(resolve, ms));
+    wait(200).then(()=>{console.log(`Done!`)});
+
     go = document.querySelector(`.go`);
     go.addEventListener(`click`, function(e) {
       const el = e.currentTarget;

@@ -23,9 +23,12 @@
 
     function handleError(err) {console.log(`Error: ${err}`)}
 
-    makePizza(['cheese','pineapple']).then(pizza => {
-      console.log(pizza);
-    }).catch(handleError)
+    const p1 = makePizza(['pep']);
+    const p2 = makePizza(['pineapple']);
+
+    // makePizza(['cheese','pineapple']).then(pizza => {
+    //   console.log(pizza);
+    // }).catch(handleError)
 
     // const pizzaPromise1 = makePizza(['hot peppers', 'onion', 'feta']);
     // const pizzaPromise2 = makePizza(['one', 'two', 'three', 'four', 'one', 'two', 'three', 'four', 'one', 'two', 'three', 'four']);
@@ -55,7 +58,7 @@
 //   })
 //   .then(function(pizza) {
 //     console.log(pizza);
-//     return makePizza();
+//     return makePizza([`pineapple`]);
 //   })
 //   .then(function(pizza) {
 //     console.log(pizza);
@@ -64,7 +67,7 @@
 //   .then(pizza => {
 //     console.log('All done! here is your last pizza');
 //     console.log(pizza);
-//   })
+//   }).catch(handleError)
 // console.log('Right after');
   </script>
 </body>

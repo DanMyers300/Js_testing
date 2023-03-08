@@ -10,9 +10,19 @@
 
 <body>
   <script>
-    function makePizza() {
-      console.log(`Making a 'Za`);
+    function makePizza(toppings) {
+      const pizzaPromise = new Promise(
+        function(resolve, reject) {
+          resolve(`Here is your pizza 🍕 with the toppings ${toppings.join(` `)}`);
+        });
+      return pizzaPromise;
     }
+
+    const pepperoniPromise = makePizza(['pepperoni']);
+    const canadianPromise = makePizza(['pepperoni', 'mushroom', 'onions'])
+
+    const pizza = makePizza();
+    console.log(pizza);
   </script>
 </body>
 

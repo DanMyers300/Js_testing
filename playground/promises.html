@@ -10,20 +10,38 @@
 
 <body>
   <script>
-    function makePizza(toppings) {
+    function makePizza(toppings = []) {
       const pizzaPromise = new Promise(function(resolve, reject) {
-      resolve(`Here is your pizza 🍕 with the toppings ${toppings.join(' ')}`);
-      });
+        const amountOfTimeToBake = 500 + (toppings.length * 200);
+      setTimeout(function() {resolve(`Here is your pizza 🍕 with the toppings ${toppings.join(' ')}`);
+      }, 1000)
+    });
       return pizzaPromise;
     }
 
-    const pepperoniPromise = makePizza(['pepperoni']);
-    const canadianPromise = makePizza(['pepperoni', 'mushroom', 'onions'])
-
-    const pizza = makePizza();
-    console.log(pepperoniPromise, canadianPromise);
-
-    // NEXT: .then() METHOD
+    console.log('First');
+makePizza(['pepperoni', 'ham'])
+  .then(function(pizza) {
+    console.log(pizza);
+    return makePizza(['ham', 'cheese']);
+  })
+  .then(function(pizza) {
+    console.log(pizza);
+    return makePizza(['hot peppers', 'onion', 'feta']);
+  })
+  .then(function(pizza) {
+    console.log(pizza);
+    return makePizza();
+  })
+  .then(function(pizza) {
+    console.log(pizza);
+    return makePizza(['one', 'two', 'three', 'four', 'one', 'two', 'three', 'four', 'one', 'two', 'three', 'four']);
+  })
+  .then(pizza => {
+    console.log('All done! here is your last pizza');
+    console.log(pizza);
+  })
+console.log('Right after');
   </script>
 </body>
 

@@ -26,6 +26,13 @@
     const p1 = makePizza(['pep']);
     const p2 = makePizza(['pineapple']);
 
+    const dinnerPromise2 = Promise.all([p1, p2]);
+
+    dinnerPromise2
+      .then(results => {
+        console.log(results);
+      }).catch(handleError);
+
     // makePizza(['cheese','pineapple']).then(pizza => {
     //   console.log(pizza);
     // }).catch(handleError)

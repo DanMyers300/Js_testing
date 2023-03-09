@@ -9,11 +9,15 @@
 </head>
 
 <body>
+  <p class="user"></p>
   <script>
+    function handleError(err) {console.log(`Error: ${err}`)}
+
+    const userEl = document.querySelector(`.user`);
     const endpoint = "https://api.github.com/users/wesbos"
 
-    function handleError(err) {console.log(`Error: ${err}`)}
-    
+
+    userEl.textContent = `Loading....`;
     fetch(endpoint)
     .then(
       (response) => {return response.json()})
@@ -22,6 +26,7 @@
       console.log(data.blog);
       console.log(data.name);
       console.log(data.location);
+      userEl.textContent = `${data.name} - ${data.blog}`;
     })
     .catch(handleError);
   </script>

@@ -6,4 +6,14 @@ function getRandomBetween(min = 20, max = 150, randomNumber=Math.random()) {
         );
 };
 
-console.log(getRandomBetween());
+function draw(el) {
+    const text = el.textContent;
+    let soFar = ``;
+
+    for (const letter of text) {
+        console.log(letter);
+        soFar += letter;
+        console.log(soFar);
+    }
+};
+document.querySelectorAll('[data-type]').forEach(draw);

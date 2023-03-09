@@ -16,11 +16,16 @@
       })
     }
 
+    function handleError(err) {
+      console.log(`Ohhhh noooo!`)
+      console.log(err);
+    }
+
     function makePizza(toppings = []) {
       return new Promise(function (resolve, reject) {
         // reject if people try with pineapple
         if (toppings.includes('pineapple')) {
-          reject('Seriously? Get out 🍍');
+          reject('🍍 NOT ALLOWED');
         }
         const amountOfTimeToBake = 500 + (toppings.length * 200);
         // wait 1 second for the pizza to cook:
@@ -32,6 +37,20 @@
       });
     }
 
+    function makeSafe(fn, errorHanlder) {
+      return function() {
+        fn().catch(errorHanlder);
+      }
+    }
+
+    async function go() {
+      const pizza = await makePizza(['pineapple']);
+      console.log(pizza);
+      return pizza;
+    }
+
+   const safeGo = makeSafe(go, handleError);
+   safeGo();
   </script>
 </body>
 

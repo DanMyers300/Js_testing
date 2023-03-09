@@ -6,14 +6,27 @@ function getRandomBetween(min = 20, max = 150, randomNumber=Math.random()) {
         );
 };
 
-function draw(el) {
+
+async function draw(el) {
+    let index = 1;
     const text = el.textContent;
     let soFar = ``;
+    const { typeMin, typeMax } = el.dataset;
 
-    for (const letter of text) {
-        console.log(letter);
-        soFar += letter;
-        console.log(soFar);
+    // for (const letter of text) {
+    //     console.log(letter);
+    //     soFar += letter;
+    //     console.log(soFar);
+    //     await wait(amountOfTimeToWait);
+    // }
+
+    async function drawLetter() {
+        el.textContent = text.slice(0, index);
+        index += 1;
+        const amountOfTimeToWait = getRandomBetween(typeMin, typeMax);
+        await wait(amountOfTimeToWait);
+        if (index <= text.length) {drawLetter()}
     }
+    drawLetter();
 };
 document.querySelectorAll('[data-type]').forEach(draw);

@@ -1,6 +1,7 @@
 const baseEndpoint = "https://icanhazdadjoke.com";
 const jokeButton = document.querySelector(`.getJoke`);
 const jokeHolder = document.querySelector(`.joke`);
+const loader = document.querySelector(`.loader`);
 
 const buttonText = [
   'Ugh.',
@@ -38,5 +39,3 @@ async function handleClick() {
 }
 
 jokeButton.addEventListener(`click`, handleClick);
-
-console.log(randomItemFromArray(buttonText));

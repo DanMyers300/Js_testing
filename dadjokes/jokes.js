@@ -1,4 +1,4 @@
-const baseEndpoint = "https://icanhazdadjoke.com/api";
+const baseEndpoint = "https://icanhazdadjoke.com";
 const jokeButton = document.querySelector(`.getJoke`);
 const jokeHolder = document.querySelector(`.joke`);
 
@@ -14,8 +14,12 @@ const buttonText = [
 ];
 
 async function fetchJoke() {
-  const reponse = await fetch(`${baseEndpoint}`);
-  console.log(reponse);
+  const response = await fetch(`${baseEndpoint}`, {
+    headers: {
+      Accept: "application/json",
+    }, 
+  });
+  return response.json();
 }
 
 fetchJoke();

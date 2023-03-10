@@ -22,4 +22,9 @@ async function fetchJoke() {
   return response.json();
 }
 
-fetchJoke();
+async function handleClick() {
+  const { joke } = await fetchJoke();
+  jokeHolder.textContent = joke;
+}
+
+jokeButton.addEventListener(`click`, handleClick);
